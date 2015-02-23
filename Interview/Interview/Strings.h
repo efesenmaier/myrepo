@@ -6,6 +6,8 @@
 #include <hash_set>
 #include <hash_map>
 
+using namespace std;
+
 int RomanCharToInt(char c)
 {
 	switch (c)
@@ -130,6 +132,27 @@ void ReverseStringInPlace(std::string& string)
 	for (size_t i = 0; i < size / 2; ++i)
 	{
 		XorSwap(string[i], string[size - 1 - i]);
+	}
+}
+
+void CapitalizeWords(string& str)
+{
+	bool fWordChar = false;
+
+	for (size_t i = 0; i < str.size(); ++i)
+	{
+		if (str[i] >= 'A' && str[i] <= 'z')
+		{
+			if (!fWordChar)
+			{
+				str[i] = toupper(str[i]);
+				fWordChar = true;
+			}
+		}
+		else
+		{
+			fWordChar = false;
+		}
 	}
 }
 

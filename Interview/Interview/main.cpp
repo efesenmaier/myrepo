@@ -4,6 +4,7 @@
 #include <Trees.h>
 #include <Arrays.h>
 #include <LRUCache.h>
+#include <ProducerConsumer.h>
 #include <cassert>
 
 #include <iterator>
@@ -312,8 +313,20 @@ int main(int argc, char** argv)
 
 			assert(false == IsTreeMirror(root));
 		}
+	}
+	
+	{
+		// Capitalize strings test
+		{
+			string s = "  i am testing \"how\" to capitalize \'strings\'   !";
+			std::cout << s << endl;
+			CapitalizeWords(s);
+			cout << s << endl;
+		}
+	}
 
-
+	{
+		TestProducerConsumerQueue();
 	}
 
 	{

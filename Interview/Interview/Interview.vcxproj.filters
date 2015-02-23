@@ -20,7 +20,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Arrays.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Lists.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LRUCache.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Strings.h">
@@ -29,10 +35,7 @@
     <ClInclude Include="Trees.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Arrays.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LRUCache.h">
+    <ClInclude Include="ProducerConsumer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
