@@ -1,6 +1,3 @@
-#include <cassert>
-#include <memory>
-
 template <class T>
 struct ListItem
 {

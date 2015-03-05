@@ -47,6 +47,8 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>.</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeaderFile>Interview.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -71,8 +73,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arrays.h" />
+    <ClInclude Include="Boggle.h" />
+    <ClInclude Include="Interview.h" />
     <ClInclude Include="Lists.h" />
     <ClInclude Include="LRUCache.h" />
+    <ClInclude Include="Matrix.h" />
     <ClInclude Include="ProducerConsumer.h" />
     <ClInclude Include="Strings.h" />
     <ClInclude Include="Trees.h" />

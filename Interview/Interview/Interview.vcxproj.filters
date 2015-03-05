@@ -38,5 +38,14 @@
     <ClInclude Include="ProducerConsumer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Interview.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Boggle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

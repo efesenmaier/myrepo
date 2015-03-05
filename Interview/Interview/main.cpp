@@ -1,18 +1,267 @@
-#include <iostream>
+#include "Interview.h"
+
+#include <Arrays.h>
+#include <Boggle.h>
 #include <Lists.h>
+#include <LRUCache.h>
+#include <Matrix.h>
+#include <ProducerConsumer.h>
 #include <Strings.h>
 #include <Trees.h>
-#include <Arrays.h>
-#include <LRUCache.h>
-#include <ProducerConsumer.h>
-#include <cassert>
 
-#include <iterator>
-
-int main(int argc, char** argv)
+void TestMatrixOperations()
 {
-	std::cout << "Hello World!!!" << std::endl;
+	{
+		Matrix<int> m(1, 1, { 1 });
+		cout << "Matrix (initial):" << endl << m << endl;
+		RotateMatrixClockwise(m);
+		cout << "Matrix (rotated):" << endl << m << endl;
+	}
 
+	{
+		Matrix<int> m(2, 2, { 1, 2, 3, 4 });
+		cout << "Matrix (initial):" << endl << m << endl;
+		RotateMatrixClockwise(m);
+		cout << "Matrix (rotated):" << endl << m << endl;
+	}
+
+	{
+		Matrix<int> m(3, 3, { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+		cout << "Matrix (initial):" << endl << m << endl;
+		RotateMatrixClockwise(m);
+		cout << "Matrix (rotated):" << endl << m << endl;
+	}
+
+	{
+		Matrix<int> m(4, 4, { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 });
+		cout << "Matrix (initial):" << endl << m << endl;
+		RotateMatrixClockwise(m);
+		cout << "Matrix (rotated):" << endl << m << endl;
+	}
+}
+
+void TestStringOperations()
+{
+	assert(5 == RomanToInt("V"));
+	assert(5 == RomanToInt("VX"));
+	assert(85 == RomanToInt("VXC"));
+	assert(6 == RomanToInt("VI"));
+	assert(10 == RomanToInt("VV"));
+	assert(89 == RomanToInt("IVVC"));
+
+	assert(2000 == RomanToInt("MM"));
+	assert(1999 == RomanToInt("MCMXCIX"));
+	assert(2013 == RomanToInt("MMXIII"));
+	assert(2014 == RomanToInt("MMXIV"));
+	assert(2016 == RomanToInt("MMXVI"));
+	assert(18 == RomanToInt("XIIX"));
+	assert(18 == RomanToInt("IIXX"));
+	assert(4 == RomanToInt("IVX"));
+
+	std::hash_map<std::string, int> dictionary;
+	std::vector<std::hash_map<std::string, int>::iterator> repeatingWords;
+	FindRepeatingWords("Ba ba black sheep, have you any wool. Yes sir, yes sir, three bags full. ba ba ba.", dictionary, repeatingWords);
+	for (std::vector<std::hash_map<std::string, int>::iterator>::iterator i = repeatingWords.begin(); i != repeatingWords.end(); ++i)
+	{
+		std::cout << (*i)->first << " ";
+	}
+	std::cout << std::endl;
+
+	// Reverse string tests
+	//
+	{
+		std::string reverseMe = "";
+		std::cout << "Reverse \"" << reverseMe << "\":";
+		ReverseStringInPlace(reverseMe);
+		std::cout << reverseMe << std::endl;
+	}
+
+	{
+		std::string reverseMe = "ABCDEF";
+		std::cout << "Reverse \"" << reverseMe << "\":";
+		ReverseStringInPlace(reverseMe);
+		std::cout << reverseMe << std::endl;
+	}
+
+	{
+		std::string reverseMe = "ABCDEFG";
+		std::cout << "Reverse \"" << reverseMe << "\":";
+		ReverseStringInPlace(reverseMe);
+		std::cout << reverseMe << std::endl;
+	}
+
+	{
+		string str = "stressed";
+		std::cout << "Reverse \"" << str << "\":";
+		ReverseStringInPlace(str);
+		std::cout << str << std::endl;
+	}
+
+	// Replace spaces tests
+	//
+	{
+		std::string str = "";
+		std::cout << "Replace spaces \"" << str << "\":";
+		ReplaceSpacesWithPercent20(str);
+		std::cout << str << std::endl;
+	}
+	{
+		std::string str = " \t ";
+		std::cout << "Replace spaces \"" << str << "\":";
+		ReplaceSpacesWithPercent20(str);
+		std::cout << str << std::endl;
+	}
+
+	{
+		std::string str = "ABCDEFG";
+		std::cout << "Replace spaces \"" << str << "\":";
+		ReplaceSpacesWithPercent20(str);
+		std::cout << str << std::endl;
+	}
+
+	{
+		std::string str = "A B C";
+		std::cout << "Replace spaces \"" << str << "\":";
+		ReplaceSpacesWithPercent20(str);
+		std::cout << str << std::endl;
+	}
+
+	// Capitalize strings tests
+	//
+	{
+		{
+			string s = "  i am testing \"how\" to capitalize \'strings\'   !";
+			std::cout << s << endl;
+			CapitalizeWords(s);
+			cout << s << endl;
+		}
+	}
+
+	{
+		string str = "aaabbbab";
+		cout << "Compress \"" << str << "\":";
+		string newStr;
+		if (CompressString(str, &newStr))
+		{
+			cout << newStr << endl;
+		}
+		else
+		{
+			cout << "compression failed" << endl;
+		}
+	}
+
+	{
+		string str = "ab";
+		cout << "Compress \"" << str << "\":";
+		string newStr;
+		if (CompressString(str, &newStr))
+		{
+			cout << newStr << endl;
+		}
+		else
+		{
+			cout << "compression failed" << endl;
+		}
+	}
+}
+
+void TestArrayOperations()
+{
+
+	{
+		int iarr[] = { 1, 1, 2, 3, 4, 4, 5, 6, 7, 7, 7, 8, 9, 10 };
+
+		qsort(iarr, sizeof(iarr) / sizeof(iarr[0]), sizeof(iarr[0]), int_cmp);
+
+		PrintAllPairsWithSum(iarr, sizeof(iarr) / sizeof(iarr[0]), 8);
+	}
+
+	{
+		std::vector<int> set1 = { 0, 1 };
+		std::vector<int> set2 = { 2 };
+
+		std::vector<int> intersections = FindIntersectionsByHashSetLookup(set1, set2);
+		std::copy(intersections.begin(), intersections.end(), std::ostream_iterator<int>(std::cout, ", "));
+		std::cout << std::endl;
+
+		std::vector<int> intersections2 = FindIntersectionsBySortedCompare(set1, set2);
+		std::copy(intersections2.begin(), intersections2.end(), std::ostream_iterator<int>(std::cout, ", "));
+		std::cout << std::endl;
+
+		std::hash_set<int> stlIntersections;
+
+		std::set_intersection(
+			set1.begin(),
+			set1.end(),
+			set2.begin(),
+			set2.end(),
+			std::insert_iterator<std::hash_set<int>>(stlIntersections, stlIntersections.begin()));
+
+		assert(std::is_permutation(intersections.begin(), intersections.end(), stlIntersections.begin()));
+		assert(std::is_permutation(intersections2.begin(), intersections2.end(), stlIntersections.begin()));
+		assert(std::is_permutation(intersections.begin(), intersections.end(), intersections2.begin()));
+	}
+
+	{
+		std::vector<int> set1 = { 0, 1 };
+		std::vector<int> set2 = {};
+
+		std::vector<int> intersections = FindIntersectionsByHashSetLookup(set1, set2);
+		std::copy(intersections.begin(), intersections.end(), std::ostream_iterator<int>(std::cout, ", "));
+		std::cout << std::endl;
+
+		std::vector<int> intersections2 = FindIntersectionsBySortedCompare(set1, set2);
+		std::copy(intersections2.begin(), intersections2.end(), std::ostream_iterator<int>(std::cout, ", "));
+		std::cout << std::endl;
+
+		std::hash_set<int> stlIntersections;
+
+		std::set_intersection(
+			set1.begin(),
+			set1.end(),
+			set2.begin(),
+			set2.end(),
+			std::insert_iterator<std::hash_set<int>>(stlIntersections, stlIntersections.begin()));
+
+		assert(std::is_permutation(intersections.begin(), intersections.end(), stlIntersections.begin()));
+		assert(std::is_permutation(intersections2.begin(), intersections2.end(), stlIntersections.begin()));
+		assert(std::is_permutation(intersections.begin(), intersections.end(), intersections2.begin()));
+	}
+
+	{
+		std::vector<int> set1 = { 0, 1, 10, 9, 9, 3, 2 };
+		std::vector<int> set2 = { 2, 9, 9, 9, 6, 8, 0 };
+
+		std::vector<int> intersections = FindIntersectionsByHashSetLookup(set1, set2);
+		std::copy(intersections.begin(), intersections.end(), std::ostream_iterator<int>(std::cout, ", "));
+		std::cout << std::endl;
+
+		std::vector<int> intersections2 = FindIntersectionsBySortedCompare(set1, set2);
+		std::copy(intersections2.begin(), intersections2.end(), std::ostream_iterator<int>(std::cout, ", "));
+		std::cout << std::endl;
+
+		std::hash_set<int> stlIntersections;
+
+
+		SortInPlace(set1);
+		SortInPlace(set2);
+		std::set_intersection(
+			set1.begin(),
+			set1.end(),
+			set2.begin(),
+			set2.end(),
+			std::insert_iterator<std::hash_set<int>>(stlIntersections, stlIntersections.begin()));
+
+		assert(std::is_permutation(intersections.begin(), intersections.end(), stlIntersections.begin()));
+		assert(std::is_permutation(intersections2.begin(), intersections2.end(), stlIntersections.begin()));
+		assert(std::is_permutation(intersections.begin(), intersections.end(), intersections2.begin()));
+	}
+
+}
+
+void TestLinkedListOperations()
+{
 	List<int> list;
 	list.InsertFront(2);
 	list.InsertFront(1);
@@ -80,45 +329,10 @@ int main(int argc, char** argv)
 	{
 		std::cout << "Exception:" << e.what() << std::endl;
 	}
+}
 
-
-	assert(5 == RomanToInt("V"));
-	assert(5 == RomanToInt("VX"));
-	assert(85 == RomanToInt("VXC"));
-	assert(6 == RomanToInt("VI"));
-	assert(10 == RomanToInt("VV"));
-	assert(89 == RomanToInt("IVVC"));
-
-	assert (2000 == RomanToInt("MM"));
-	assert (1999 == RomanToInt("MCMXCIX"));
-	assert(2013 == RomanToInt("MMXIII"));
-	assert(2014 == RomanToInt("MMXIV"));
-	assert(2016 == RomanToInt("MMXVI"));
-	assert(18 == RomanToInt("XIIX"));
-	assert(18 == RomanToInt("IIXX"));
-	assert(4 == RomanToInt("IVX"));
-
-	std::hash_map<std::string, int> dictionary;
-	std::vector<std::hash_map<std::string, int>::iterator> repeatingWords;
-	FindRepeatingWords("Ba ba black sheep, have you any wool. Yes sir, yes sir, three bags full. ba ba ba.", dictionary, repeatingWords);
-	for (std::vector<std::hash_map<std::string, int>::iterator>::iterator i = repeatingWords.begin(); i != repeatingWords.end(); ++i)
-	{
-		std::cout << (*i)->first << " ";
-	}
-	std::cout << std::endl;
-
-	{
-		std::string reverseMe = "ABCDEF";
-		ReverseStringInPlace(reverseMe);
-		std::cout << reverseMe << std::endl;
-	}
-
-	{
-		std::string reverseMe = "ABCDEFG";
-		ReverseStringInPlace(reverseMe);
-		std::cout << reverseMe << std::endl;
-	}
-
+void TestTreeOperations()
+{
 	BST<int> bst;
 
 	int arr[] = { 5, 2, 10, 7, 8, 1, 4 };
@@ -131,95 +345,62 @@ int main(int argc, char** argv)
 	std::cout << "Post Order:"; bst.PrintPostOrderIterative();
 	std::cout << "BFS:       "; bst.PrintBFS();
 
+
+	// Tree mirror testing
 	{
-		int iarr[] = { 1, 1, 2, 3, 4, 4, 5, 6, 7, 7, 7, 8, 9, 10 };
+		{
+			//
+			//     N
+			//    / \
+						//   A   A
+			//  / \ / \
+						//  B C C  B
+			//  \      /
+			//   D    D
+			//Return : True
 
-		qsort(iarr, sizeof(iarr) / sizeof(iarr[0]), sizeof(iarr[0]), int_cmp);
+			TreeNode<string>* root = new TreeNode<string>("N");
+			root->m_left = new TreeNode<string>("A");
+			root->m_right = new TreeNode<string>("A");
+			root->m_left->m_left = new TreeNode<string>("B");
+			root->m_left->m_right = new TreeNode<string>("C");
+			root->m_right->m_left = new TreeNode<string>("C");
+			root->m_right->m_right = new TreeNode<string>("B");
+			root->m_left->m_left->m_right = new TreeNode<string>("D");
+			root->m_right->m_right->m_left = new TreeNode<string>("D");
 
-		PrintAllPairsWithSum(iarr, sizeof(iarr) / sizeof(iarr[0]), 8);
+			assert(IsTreeMirror(root));
+		}
+
+		{
+			//		N
+			//	   / \
+						//    A   A
+			//   / \ / \
+						//  B  C C  D
+			//    / \/ \
+						//	  W R R W
+			//	Return : False
+
+			TreeNode<string>* root = new TreeNode<string>("N");
+			root->m_left = new TreeNode<string>("A");
+			root->m_right = new TreeNode<string>("A");
+			root->m_left->m_left = new TreeNode<string>("B");
+			root->m_left->m_right = new TreeNode<string>("C");
+			root->m_right->m_left = new TreeNode<string>("C");
+			root->m_right->m_right = new TreeNode<string>("D");  // Mismatch value
+			root->m_left->m_right->m_left = new TreeNode<string>("W");
+			root->m_left->m_right->m_right = new TreeNode<string>("R");
+			root->m_right->m_left->m_left = new TreeNode<string>("R");
+			root->m_right->m_right->m_left = new TreeNode<string>("W"); // Wrong order node
+
+			assert(false == IsTreeMirror(root));
+		}
 	}
+}
 
-	{
-		std::vector<int> set1 = { 0, 1};
-		std::vector<int> set2 = { 2 };
-
-		std::vector<int> intersections = FindIntersectionsByHashSetLookup(set1, set2);
-		std::copy(intersections.begin(), intersections.end(), std::ostream_iterator<int>(std::cout, ", "));
-		std::cout << std::endl;
-
-		std::vector<int> intersections2 = FindIntersectionsBySortedCompare(set1, set2);
-		std::copy(intersections2.begin(), intersections2.end(), std::ostream_iterator<int>(std::cout, ", "));
-		std::cout << std::endl;
-
-		std::hash_set<int> stlIntersections;
-
-		std::set_intersection(
-			set1.begin(),
-			set1.end(),
-			set2.begin(),
-			set2.end(),
-			std::insert_iterator<std::hash_set<int>>(stlIntersections, stlIntersections.begin()));
-
-		assert(std::is_permutation(intersections.begin(), intersections.end(), stlIntersections.begin()));
-		assert(std::is_permutation(intersections2.begin(), intersections2.end(), stlIntersections.begin()));
-		assert(std::is_permutation(intersections.begin(), intersections.end(), intersections2.begin()));
-	}
-
-	{
-		std::vector<int> set1 = { 0, 1 };
-		std::vector<int> set2 = { };
-
-		std::vector<int> intersections = FindIntersectionsByHashSetLookup(set1, set2);
-		std::copy(intersections.begin(), intersections.end(), std::ostream_iterator<int>(std::cout, ", "));
-		std::cout << std::endl;
-
-		std::vector<int> intersections2 = FindIntersectionsBySortedCompare(set1, set2);
-		std::copy(intersections2.begin(), intersections2.end(), std::ostream_iterator<int>(std::cout, ", "));
-		std::cout << std::endl;
-
-		std::hash_set<int> stlIntersections;
-
-		std::set_intersection(
-			set1.begin(),
-			set1.end(),
-			set2.begin(),
-			set2.end(),
-			std::insert_iterator<std::hash_set<int>>(stlIntersections, stlIntersections.begin()));
-
-		assert(std::is_permutation(intersections.begin(), intersections.end(), stlIntersections.begin()));
-		assert(std::is_permutation(intersections2.begin(), intersections2.end(), stlIntersections.begin()));
-		assert(std::is_permutation(intersections.begin(), intersections.end(), intersections2.begin()));
-	}
-
-	{
-		std::vector<int> set1 = { 0, 1, 10, 9, 9, 3, 2};
-		std::vector<int> set2 = { 2, 9,  9, 9, 6, 8, 0};
-
-		std::vector<int> intersections = FindIntersectionsByHashSetLookup(set1, set2);
-		std::copy(intersections.begin(), intersections.end(), std::ostream_iterator<int>(std::cout, ", "));
-		std::cout << std::endl;
-
-		std::vector<int> intersections2 = FindIntersectionsBySortedCompare(set1, set2);
-		std::copy(intersections2.begin(), intersections2.end(), std::ostream_iterator<int>(std::cout, ", "));
-		std::cout << std::endl;
-
-		std::hash_set<int> stlIntersections;
-
-
-		SortInPlace(set1);
-		SortInPlace(set2);
-		std::set_intersection(
-			set1.begin(),
-			set1.end(),
-			set2.begin(),
-			set2.end(),
-			std::insert_iterator<std::hash_set<int>>(stlIntersections, stlIntersections.begin()));
-
-		assert(std::is_permutation(intersections.begin(), intersections.end(), stlIntersections.begin()));
-		assert(std::is_permutation(intersections2.begin(), intersections2.end(), stlIntersections.begin()));
-		assert(std::is_permutation(intersections.begin(), intersections.end(), intersections2.begin()));
-	}
-
+void TestLRUCache()
+{
 
 	{
 		int value = 0;
@@ -247,7 +428,7 @@ int main(int argc, char** argv)
 
 		m_cache.AddOrUpdate(4, 4);
 		std::cout << m_cache << std::endl;
-		
+
 		assert(false == m_cache.Lookup(1, value));
 
 		m_cache.AddOrUpdate(1, 2);
@@ -262,77 +443,27 @@ int main(int argc, char** argv)
 		assert(true == m_cache.Lookup(4, value));
 		assert(5 == value);
 	}
+}
 
-	// Tree mirror testing
-	{
-		{
-			//
-			//     N
-			//    / \
-			//   A   A
-			//  / \ / \
-			//  B C C  B
-			//  \      /
-			//   D    D
-			//Return : True
+int main(int argc, char** argv)
+{
+	TestLinkedListOperations();
 
-			TreeNode<string>* root = new TreeNode<string>("N");
-			root->m_left = new TreeNode<string>("A");
-			root->m_right = new TreeNode<string>("A");
-			root->m_left->m_left = new TreeNode<string>("B");
-			root->m_left->m_right = new TreeNode<string>("C");
-			root->m_right->m_left = new TreeNode<string>("C");
-			root->m_right->m_right = new TreeNode<string>("B");
-			root->m_left->m_left->m_right = new TreeNode<string>("D");
-			root->m_right->m_right->m_left = new TreeNode<string>("D");
+	TestStringOperations();
 
-			assert(IsTreeMirror(root));
-		}
+	TestArrayOperations();
 
-		{
-			//		N
-			//	   / \
-			//    A   A
-			//   / \ / \
-			//  B  C C  D
-			//    / \/ \
-			//	  W R R W
-			//	Return : False
+	TestMatrixOperations();
 
-			TreeNode<string>* root = new TreeNode<string>("N");
-			root->m_left = new TreeNode<string>("A");
-			root->m_right = new TreeNode<string>("A");
-			root->m_left->m_left = new TreeNode<string>("B");
-			root->m_left->m_right = new TreeNode<string>("C");
-			root->m_right->m_left = new TreeNode<string>("C");
-			root->m_right->m_right = new TreeNode<string>("D");  // Mismatch value
-			root->m_left->m_right->m_left = new TreeNode<string>("W");
-			root->m_left->m_right->m_right = new TreeNode<string>("R");
-			root->m_right->m_left->m_left = new TreeNode<string>("R");
-			root->m_right->m_right->m_left = new TreeNode<string>("W"); // Wrong order node
+	TestTreeOperations();
 
-			assert(false == IsTreeMirror(root));
-		}
-	}
-	
-	{
-		// Capitalize strings test
-		{
-			string s = "  i am testing \"how\" to capitalize \'strings\'   !";
-			std::cout << s << endl;
-			CapitalizeWords(s);
-			cout << s << endl;
-		}
-	}
+	TestLRUCache();
+			
+	TestProducerConsumerQueue();
 
-	{
-		TestProducerConsumerQueue();
-	}
+	cout << "Press return to exit ..." << endl;
+	string line;
+	getline(std::cin, line);
 
-	{
-		std::cout << "Press return to exit ..." << std::endl;
-		string line;
-		std::getline(std::cin, line);
-	}
 	return 0;
 }

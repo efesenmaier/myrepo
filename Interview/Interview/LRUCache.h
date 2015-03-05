@@ -1,7 +1,3 @@
-#include <hash_map>
-#include <list>
-#include <memory>
-
 template <class T>
 struct CacheEntry
 {

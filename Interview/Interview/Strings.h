@@ -1,12 +1,20 @@
-#include <cassert>
-#include <stack>
-#include <string>
-#include <set>
-#include <algorithm>
-#include <hash_set>
-#include <hash_map>
-
 using namespace std;
+
+template <class T>
+void Swap(T* a, T* b)
+{
+	T temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+template <class T>
+void XorSwap(T* a, T* b)
+{
+	*x ^= *y;
+	*y ^= *x;
+	*x ^= *y;
+}
 
 int RomanCharToInt(char c)
 {
@@ -119,19 +127,20 @@ void FindRepeatingWords(
 	}
 }
 
-void XorSwap(char& x, char& y)
-{
-	x ^= y;
-	y ^= x;
-	x ^= y;
-}
-
 void ReverseStringInPlace(std::string& string)
 {
-	size_t size = string.size();
-	for (size_t i = 0; i < size / 2; ++i)
+	if (string.size() < 2)
 	{
-		XorSwap(string[i], string[size - 1 - i]);
+		return;
+	}
+
+	char* i = &string[0];
+	char* j = &string[string.size() - 1];
+	while (i < j)
+	{
+		Swap(i, j);
+		++i;
+		--j;
 	}
 }
 
@@ -155,4 +164,116 @@ void CapitalizeWords(string& str)
 		}
 	}
 }
+
+void ReplaceSpacesWithPercent20(string& str)
+{
+	size_t numSpaces = 0;
+	for (size_t i = 0; i < str.size(); ++i)
+	{
+		if (str[i] == ' ') ++numSpaces;
+	}
+
+	if (numSpaces == 0)
+	{
+		return;
+	}
+
+	char* i = &str[str.size() - 1];
+
+	str.resize(str.size() + 2 * numSpaces, '\0');
+
+	char* j = &str[str.size() - 1];
+
+	while (i < j)
+	{
+		if (' ' == *i)
+		{
+			*j = '0';
+			--j;
+			*j = '2';
+			--j;
+			*j = '%';
+		}
+		else
+		{
+			*j = *i;
+		}
+		--j;
+		--i;
+	}
+}
+
+size_t CalculateNumDigits(size_t num, size_t base = 10)
+{
+	size_t numDigits = 0;
+	do
+	{
+		++numDigits;
+		num /= base;
+	} while (num != 0);
+	return numDigits;
+}
+
+bool CompressString(const string& str, string* newStr)
+{
+	size_t newLength = 0;
+	char last = 0;
+	size_t repeatCount = 0;
+	for (size_t i = 0; i < str.size(); ++i)
+	{
+		if (last == str[i])
+		{
+			++repeatCount;
+		}
+		else
+		{
+			if (i != 0)
+			{
+				newLength += 1 + CalculateNumDigits(repeatCount);
+			}
+			repeatCount = 1;
+			last = str[i];
+		}
+	}
+
+	newLength += 1 + CalculateNumDigits(repeatCount);
+
+	if (newLength > str.size())
+	{
+		return false;
+	}
+
+	newStr->resize(newLength, 0);
+
+	last = 0;
+	repeatCount = 0;
+	int j = 0;
+	for (size_t i = 0; i < str.size(); ++i)
+	{
+		if (last == str[i])
+		{
+			++repeatCount;
+		}
+		else
+		{
+			if (i != 0)
+			{
+				(*newStr)[j] = last;
+				++j;
+				sprintf_s(&(*newStr)[j], newStr->size() - j + 1, "%d", repeatCount);
+				j += CalculateNumDigits(repeatCount);
+			}
+			repeatCount = 1;
+			last = str[i];
+		}
+	}
+
+	(*newStr)[j] = last;
+	++j;
+	sprintf_s(&(*newStr)[j], newStr->size() - j + 1, "%d", repeatCount);
+
+	return true;
+}
+
+
 

@@ -1,10 +1,3 @@
-#include <cassert>
-#include <iostream>
-#include <string>
-#include <set>
-#include <hash_map>
-#include <hash_set>
-
 using namespace std;
 
 /* qsort int comparison function */
