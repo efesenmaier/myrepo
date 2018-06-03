@@ -1,5 +1,4 @@
 public class RotateArray {
-
     public static void rotate(int[] nums, int k) {
         if (k == 0) return;
         int n = nums.length;
