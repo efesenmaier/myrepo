@@ -4,8 +4,8 @@
                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
  
-  <groupId>org.fesenmaier</groupId>
-  <artifactId>interview-prep</artifactId>
+  <groupId>org.fesenmaier.coursera</groupId>
+  <artifactId>algorithms-divide-and-conquer</artifactId>
   <version>1.0</version>
 
   <properties>
