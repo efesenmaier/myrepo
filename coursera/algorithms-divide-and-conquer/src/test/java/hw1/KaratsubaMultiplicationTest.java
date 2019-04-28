@@ -1,29 +1,23 @@
 package hw1;
 
+import com.google.common.collect.Lists;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.collections.Lists;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @Test
 public class KaratsubaMultiplicationTest {
-    List<Integer> ZERO = new ArrayList<Integer>() {
-        {
-            add(0);
-        }
-    };
+    List<Integer> ZERO = Lists.newArrayList(0);
 
-    List<Integer> ONE = new ArrayList<Integer>() {
-        {
-            add(1);
-        }
-    };
+    List<Integer> ONE = Lists.newArrayList(1);
+
     @DataProvider
     private Object[][] additionTestData() {
         return new Object[][] {
@@ -95,6 +89,26 @@ public class KaratsubaMultiplicationTest {
         BigInteger expectedResult = new BigInteger(xStr).multiply(new BigInteger(yStr));
         BigInteger actualResult = toBigInteger(result);
         Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    /**
+     * Tests random integer multiplication of 2 big integers with a value represented by 1-128 bits.
+     */
+    public void testRandomIntegerMultiplication() {
+        int numBits = 128;
+        Random random = new Random();
+        for (int i = 0; i < 1000; ++i) {
+            BigInteger xBi = new BigInteger(Math.max(random.nextInt(numBits), 1), random);
+            BigInteger yBi = new BigInteger(Math.max(random.nextInt(numBits), 1), random);
+
+            int[] x = toArray(xBi.toString());
+            int[] y = toArray(yBi.toString());
+
+            int[] result = KaratsubaMultiplication.multiply(x, y);
+            BigInteger expectedResult = xBi.multiply(yBi);
+            BigInteger actualResult = toBigInteger(result);
+            Assert.assertEquals(actualResult, expectedResult);
+        }
     }
 
     public int[] toArray(List<Integer> list) {

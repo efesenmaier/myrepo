@@ -2,7 +2,6 @@ package hw1;
 
 import org.testng.Assert;
 
-import java.math.BigInteger;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
@@ -10,13 +9,8 @@ public class KaratsubaMultiplication {
     public static boolean KARATSUBA_OPTIMIZATION = true;
 
     static int[] multiply(int[] x, int[] y) {
-        if (x.length == 1 || y.length == 1) {
-            int[] result = toArray(toInteger(x) * toInteger(y));
-            BigInteger expectedResult = toBigInteger(x).multiply(toBigInteger(y));
-            if (!toBigInteger(result).equals(expectedResult)) {
-                Assert.fail();
-            }
-            return result;
+        if (x.length == 1 && y.length == 1) {
+            return toArray(toInteger(x) * toInteger(y));
         }
 
         int maxLength = Math.max(x.length, y.length);
@@ -52,12 +46,7 @@ public class KaratsubaMultiplication {
             int[] bc = multiply(b, c);
             adPlusBc = add(ad, bc);
         }
-        int[] result = add(add(shiftLeft(ac, n), shiftLeft(adPlusBc, n/2)), bd);
-        BigInteger expectedResult = toBigInteger(x).multiply(toBigInteger(y));
-        if (!toBigInteger(result).equals(expectedResult)) {
-            Assert.fail();
-        }
-        return result;
+        return add(add(shiftLeft(ac, n), shiftLeft(adPlusBc, n/2)), bd);
     }
 
     static int[] add(int[] a, int []b) {
@@ -80,17 +69,12 @@ public class KaratsubaMultiplication {
             --iB;
         }
 
-        int resultArr[] = toArray(result);
-        BigInteger expectedResult = toBigInteger(a).add(toBigInteger(b));
-        if (!toBigInteger(resultArr).equals(expectedResult)) {
-            Assert.fail();
-        }
-        return resultArr;
+        return toArray(result);
     }
 
     static int[] subtract(int[] a, int []b) {
         // This method only works for a >= b, but that is expected here
-        Assert.assertTrue(toBigInteger(a).compareTo(toBigInteger(b)) >= 0);
+        //Assert.assertTrue(greaterThanEqual(a, b));
         int iA = a.length-1;
         int iB = b.length-1;
         ArrayDeque<Integer> result = new ArrayDeque<>(a.length);
@@ -119,12 +103,7 @@ public class KaratsubaMultiplication {
             --iB;
         }
 
-        int resultArr[] = toArray(result);
-        BigInteger expectedResult = toBigInteger(a).subtract(toBigInteger(b));
-        if (!toBigInteger(resultArr).equals(expectedResult)) {
-            Assert.fail();
-        }
-        return resultArr;
+        return toArray(result);
     }
 
     static int[] toArray(int n) {
@@ -185,36 +164,16 @@ public class KaratsubaMultiplication {
                 break;
             }
         }
-        int newLength = Math.max(arr.length-numZeroes, 1);
-        if (newLength == arr.length) {
-            return arr;
-        }
+        // If all zeroes, or empty array return single zero
         if (numZeroes == arr.length) {
             return new int[1];
         }
+        if (numZeroes == 0) {
+            return arr;
+        }
+        int newLength = arr.length-numZeroes;
         int[] newArr = new int[newLength];
         System.arraycopy(arr, numZeroes, newArr, 0, newArr.length);
         return newArr;
-    }
-
-    /**
-     * For testing.
-     * @param arr
-     * @return
-     */
-    static BigInteger toBigInteger(int[] arr) {
-        String value = "";
-        for (int i : arr) {
-            value += i;
-        }
-        try {
-            if (value.isEmpty()) {
-                return BigInteger.ZERO;
-            }
-            return new BigInteger(value);
-        } catch (NumberFormatException e) {
-            Assert.fail();
-        }
-        return null;
     }
 }
