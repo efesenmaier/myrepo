@@ -1,0 +1,1023 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="108d9deb-df0d-4cb0-8814-538fed37f279" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/part2graphs/hw1/KosarajuStronglyConnectedComponents.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/SCC.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithms-divide-and-conquer/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithms-divide-and-conquer/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithms-divide-and-conquer/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithms-divide-and-conquer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithms-divide-and-conquer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithms-divide-and-conquer/src/main/java/hw1/KaratsubaMultiplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/part1divideandconquer/hw1/KaratsubaMultiplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithms-divide-and-conquer/src/main/java/hw2/FindInversions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/part1divideandconquer/hw2/FindInversions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithms-divide-and-conquer/src/main/java/hw3/QuickSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/part1divideandconquer/hw3/QuickSort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithms-divide-and-conquer/src/main/java/hw4/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/part1divideandconquer/hw4/Edge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithms-divide-and-conquer/src/main/java/hw4/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/part1divideandconquer/hw4/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithms-divide-and-conquer/src/main/java/hw4/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/part1divideandconquer/hw4/Vertex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithms-divide-and-conquer/src/test/java/hw1/KaratsubaMultiplicationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/part1divideandconquer/hw1/KaratsubaMultiplicationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithms-divide-and-conquer/src/test/java/hw2/FindInversionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/part1divideandconquer/hw2/FindInversionsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithms-divide-and-conquer/src/test/java/hw3/QuickSortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/part1divideandconquer/hw3/QuickSortTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithms-divide-and-conquer/src/test/java/hw4/GraphMinCutTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/part1divideandconquer/hw4/GraphMinCutTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithms-divide-and-conquer/src/test/resources/integerArray100K.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/integerArray100K.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithms-divide-and-conquer/src/test/resources/minCutGraph.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/minCutGraph.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithms-divide-and-conquer/src/test/resources/quickSortData10K.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/quickSortData10K.txt" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="886500773">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="6" />
+          <entry key="project.open.time.1" value="3" />
+          <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.9" value="2" />
+          <entry key="project.opened" value="8" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="class" value="1" />
+          <entry key="java" value="43" />
+          <entry key="txt" value="4" />
+          <entry key="xml" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CLASS" value="1" />
+          <entry key="JAVA" value="43" />
+          <entry key="PLAIN_TEXT" value="4" />
+          <entry key="XML" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="22039" />
+          <entry key="xml" value="25" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="22039" />
+          <entry key="XML" value="25" />
+        </counts>
+      </usages-collector>
+    </session>
+    <session id="-744715866">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="5" />
+          <entry key="xml" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="5" />
+          <entry key="XML" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="48" />
+          <entry key="xml" value="10" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="48" />
+          <entry key="XML" value="10" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/part1divideandconquer/hw1/KaratsubaMultiplicationTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/part1divideandconquer/hw4/Vertex.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/part1divideandconquer/hw4/Graph.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="720">
+              <caret line="54" column="20" lean-forward="true" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/part1divideandconquer/hw3/QuickSortTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/part1divideandconquer/hw1/KaratsubaMultiplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/part1divideandconquer/hw2/FindInversionsTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/part1divideandconquer/hw4/GraphMinCutTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="114" column="117" selection-start-line="114" selection-start-column="117" selection-end-line="114" selection-end-column="117" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/part2graphs/hw1/KosarajuStronglyConnectedComponents.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="50" lean-forward="true" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/part1divideandconquer/hw4/Edge.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>ensurecapacity</find>
+      <find>iterator</find>
+      <find>subtract</find>
+      <find>newarraylist(1</find>
+      <find>tobiginte</find>
+      <find>tobig</find>
+      <find>return</find>
+      <find>rand</find>
+      <find>tolist</find>
+      <find>merge</find>
+      <find>scanner</find>
+      <find>equals</find>
+      <find>getedges</find>
+      <find>new Edge</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/week1/Week1KaratsubaMultiplication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hw1/Week1KaratsubaMultiplication.java" />
+        <option value="$PROJECT_DIR$/src/test/java/KaratsubaMultiplicationTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/hw1/KaratsubaMultiplicationTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hw1/KaratsubaMultiplication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hw2/FindOrderInversion.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hw2/FindInversions.java" />
+        <option value="$PROJECT_DIR$/src/test/java/hw2/FindInversionsTest.java" />
+        <option value="$PROJECT_DIR$/src/test/resources/quicksortData.txt" />
+        <option value="$PROJECT_DIR$/src/test/java/hw3/QuickSortTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hw3/QuickSort.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hw4/GraphNode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hw4/Vertex.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hw4/Edge.java" />
+        <option value="$PROJECT_DIR$/src/test/java/hw4/GraphMinCutTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hw4/Graph.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/part1divideandconquer/hw1/KaratsubaMultiplication.java" />
+        <option value="$PROJECT_DIR$/src/test/java/part1divideandconquer/hw1/KaratsubaMultiplicationTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/part1divideandconquer/hw2/FindInversionsTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/part1divideandconquer/hw3/QuickSortTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/part1divideandconquer/hw4/GraphMinCutTest.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+        <option name="lookForNested" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="163" />
+    <option name="y" value="244" />
+    <option name="width" value="1614" />
+    <option name="height" value="993" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="algorithms-stanford" type="b2602c69:ProjectViewProjectNode" />
+              <item name="algorithms-stanford" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="algorithms-stanford" type="b2602c69:ProjectViewProjectNode" />
+              <item name="algorithms-stanford" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="algorithms-stanford" type="b2602c69:ProjectViewProjectNode" />
+              <item name="algorithms-stanford" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="algorithms-stanford" type="b2602c69:ProjectViewProjectNode" />
+              <item name="algorithms-stanford" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="algorithms-stanford" type="b2602c69:ProjectViewProjectNode" />
+              <item name="algorithms-stanford" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="part1divideandconquer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="algorithms-stanford" type="b2602c69:ProjectViewProjectNode" />
+              <item name="algorithms-stanford" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="part1divideandconquer" type="462c0819:PsiDirectoryNode" />
+              <item name="hw4" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="algorithms-stanford" type="b2602c69:ProjectViewProjectNode" />
+              <item name="algorithms-stanford" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="part2graphs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="algorithms-stanford" type="b2602c69:ProjectViewProjectNode" />
+              <item name="algorithms-stanford" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="part2graphs" type="462c0819:PsiDirectoryNode" />
+              <item name="hw1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="algorithms-stanford" type="b2602c69:ProjectViewProjectNode" />
+              <item name="algorithms-stanford" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="algorithms-stanford" type="b2602c69:ProjectViewProjectNode" />
+              <item name="algorithms-stanford" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="algorithms-stanford" type="b2602c69:ProjectViewProjectNode" />
+              <item name="algorithms-stanford" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="part1divideandconquer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="algorithms-stanford" type="b2602c69:ProjectViewProjectNode" />
+              <item name="algorithms-stanford" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="part1divideandconquer" type="462c0819:PsiDirectoryNode" />
+              <item name="hw1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="algorithms-stanford" type="b2602c69:ProjectViewProjectNode" />
+              <item name="algorithms-stanford" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="part1divideandconquer" type="462c0819:PsiDirectoryNode" />
+              <item name="hw4" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="algorithms-stanford" type="b2602c69:ProjectViewProjectNode" />
+              <item name="algorithms-stanford" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/efesenma/personal/public-repo/coursera/algorithms-divide-and-conquer/src/main/java/hw3/QuickSort.java" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="hw1" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="TestNG.GraphMinCutTest.findMinCut (1)">
+    <configuration name="GraphMinCutTest" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="algorithms-stanford" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hw4.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="hw4" />
+      <option name="MAIN_CLASS_NAME" value="hw4.GraphMinCutTest" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GraphMinCutTest.findMinCut (1)" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="algorithms-stanford" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="part1divideandconquer.hw4.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="part1divideandconquer.hw4" />
+      <option name="MAIN_CLASS_NAME" value="part1divideandconquer.hw4.GraphMinCutTest" />
+      <option name="METHOD_NAME" value="findMinCut" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GraphMinCutTest.findMinCut" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="algorithms-stanford" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hw4.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="hw4" />
+      <option name="MAIN_CLASS_NAME" value="hw4.GraphMinCutTest" />
+      <option name="METHOD_NAME" value="findMinCut" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GraphMinCutTest.testHubAndSpokesMerge" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="algorithms-stanford" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hw4.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="hw4" />
+      <option name="MAIN_CLASS_NAME" value="hw4.GraphMinCutTest" />
+      <option name="METHOD_NAME" value="testHubAndSpokesMerge" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GraphMinCutTest.textLectureExampleMerges" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="algorithms-stanford" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hw4.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="hw4" />
+      <option name="MAIN_CLASS_NAME" value="hw4.GraphMinCutTest" />
+      <option name="METHOD_NAME" value="textLectureExampleMerges" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="TestNG.GraphMinCutTest.testHubAndSpokesMerge" />
+      <item itemvalue="TestNG.GraphMinCutTest.textLectureExampleMerges" />
+      <item itemvalue="TestNG.GraphMinCutTest" />
+      <item itemvalue="TestNG.GraphMinCutTest.findMinCut" />
+      <item itemvalue="TestNG.GraphMinCutTest.findMinCut (1)" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.GraphMinCutTest.findMinCut (1)" />
+        <item itemvalue="TestNG.GraphMinCutTest.findMinCut" />
+        <item itemvalue="TestNG.GraphMinCutTest" />
+        <item itemvalue="TestNG.GraphMinCutTest.textLectureExampleMerges" />
+        <item itemvalue="TestNG.GraphMinCutTest.testHubAndSpokesMerge" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="108d9deb-df0d-4cb0-8814-538fed37f279" name="Default Changelist" comment="" />
+      <created>1555265625800</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1555265625800</updated>
+      <workItem from="1555265629807" duration="16137000" />
+      <workItem from="1555283731336" duration="2049000" />
+      <workItem from="1555291318440" duration="3596000" />
+      <workItem from="1555861304206" duration="5261000" />
+      <workItem from="1555992782150" duration="11049000" />
+      <workItem from="1556568919271" duration="630000" />
+      <workItem from="1557000359782" duration="14487000" />
+      <workItem from="1557608126701" duration="206000" />
+      <workItem from="1557608413169" duration="627000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="GraphMinCutTest - 2019.05.04 at 16h 24m 49s.xml">
+      <configuration name="GraphMinCutTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="GraphMinCutTest - 2019.05.04 at 16h 25m 00s.xml">
+      <configuration name="GraphMinCutTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="GraphMinCutTest_findMinCut - 2019.05.04 at 16h 33m 19s.xml">
+      <configuration name="GraphMinCutTest.findMinCut" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="GraphMinCutTest_findMinCut - 2019.05.04 at 16h 33m 36s.xml">
+      <configuration name="GraphMinCutTest.findMinCut" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="GraphMinCutTest_findMinCut - 2019.05.04 at 16h 43m 39s.xml">
+      <configuration name="GraphMinCutTest.findMinCut" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="GraphMinCutTest_findMinCut - 2019.05.04 at 16h 44m 33s.xml">
+      <configuration name="GraphMinCutTest.findMinCut" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="GraphMinCutTest_findMinCut - 2019.05.04 at 16h 45m 41s.xml">
+      <configuration name="GraphMinCutTest.findMinCut" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="GraphMinCutTest_findMinCut - 2019.05.04 at 16h 46m 25s.xml">
+      <configuration name="GraphMinCutTest.findMinCut" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="GraphMinCutTest_findMinCut - 2019.05.11 at 14h 10m 08s.xml">
+      <configuration name="GraphMinCutTest.findMinCut" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="GraphMinCutTest_findMinCut_(1) - 2019.05.11 at 14h 10m 28s.xml">
+      <configuration name="GraphMinCutTest.findMinCut (1)" configurationId="TestNG" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="54042000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="163" y="244" width="1614" height="993" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27544528" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Learn" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.39635536" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39863327" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32915717" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32801822" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.259542" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Learn" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32915717" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997722" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32915717" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32915717" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+    </layout-to-restore>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="TestNG">
+        <watch expression="list.get(list.size()-1)" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>list.get(list.size()-1)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>arr[99999]</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/test/java/BackspaceCompareTest.java" />
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="33" column="33" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/testng/testng/6.11/testng-6.11-sources.jar!/org/testng/SuiteRunnerWorker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/java/math/BigInteger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9000">
+          <caret line="637" column="26" selection-start-line="637" selection-start-column="26" selection-end-line="637" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/java/util/ArrayDeque.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3840">
+          <caret line="294" selection-start-line="294" selection-end-line="294" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/java/lang/Integer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10980">
+          <caret line="765" selection-start-line="765" selection-end-line="765" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/java/util/List.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10260">
+          <caret line="707" column="12" selection-start-line="707" selection-start-column="12" selection-end-line="707" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/part1divideandconquer/hw2/FindInversions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="10" column="24" lean-forward="true" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/integerArray100K.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/testng/testng/6.11/testng-6.11-sources.jar!/org/testng/collections/Lists.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/java/util/stream/BaseStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="63" column="17" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/java/util/stream/IntStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="72" column="40" lean-forward="true" selection-start-line="72" selection-start-column="40" selection-end-line="72" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/java/util/Arrays.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1515">
+          <caret line="143" column="20" selection-start-line="143" selection-start-column="20" selection-end-line="143" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/java/util/DualPivotQuicksort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="35" column="36" selection-start-line="35" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/part1divideandconquer/hw3/QuickSort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/quickSortData10K.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149985">
+          <caret line="9999" column="4" selection-start-line="9999" selection-start-column="4" selection-end-line="9999" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/java/util/Random.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8580">
+          <caret line="617" column="21" selection-start-line="617" selection-start-column="21" selection-end-line="617" selection-end-column="21" />
+          <folding>
+            <element signature="e#11985#11986#0" expanded="true" />
+            <element signature="e#12016#12017#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="81" column="56" selection-start-line="81" selection-start-column="56" selection-end-line="81" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/testng/testng/6.11/testng-6.11-sources.jar!/org/testng/internal/Invoker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="671" selection-start-line="671" selection-end-line="671" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="522" column="19" selection-start-line="522" selection-start-column="19" selection-end-line="522" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/minCutGraph.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="33" lean-forward="true" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/java/util/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8385">
+          <caret line="585" column="14" selection-start-line="585" selection-start-column="14" selection-end-line="585" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/java/util/Scanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9870">
+          <caret line="700" column="11" selection-start-line="700" selection-start-column="11" selection-end-line="700" selection-end-column="11" />
+          <folding>
+            <element signature="e#26907#26908#0" expanded="true" />
+            <element signature="e#26973#26974#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/testng/testng/6.11/testng-6.11-sources.jar!/org/testng/Assert.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7440">
+          <caret line="530" column="21" selection-start-line="530" selection-start-column="21" selection-end-line="530" selection-end-column="21" />
+          <folding>
+            <element signature="e#1468#1469#0" expanded="true" />
+            <element signature="e#1505#1506#0" expanded="true" />
+            <element signature="e#2637#2638#0" expanded="true" />
+            <element signature="e#2680#2681#0" expanded="true" />
+            <element signature="e#2758#2759#0" expanded="true" />
+            <element signature="e#2778#2779#0" expanded="true" />
+            <element signature="e#5482#5483#0" expanded="true" />
+            <element signature="e#5528#5529#0" expanded="true" />
+            <element signature="e#13366#13367#0" expanded="true" />
+            <element signature="e#13412#13413#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/part1divideandconquer/hw4/Edge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/part1divideandconquer/hw1/KaratsubaMultiplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/part1divideandconquer/hw1/KaratsubaMultiplicationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/part1divideandconquer/hw2/FindInversionsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/part1divideandconquer/hw3/QuickSortTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/part2graphs/hw1/KosarajuStronglyConnectedComponents.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="50" lean-forward="true" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/part1divideandconquer/hw4/Vertex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/part1divideandconquer/hw4/Graph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="54" column="20" lean-forward="true" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/part1divideandconquer/hw4/GraphMinCutTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="114" column="117" selection-start-line="114" selection-start-column="117" selection-end-line="114" selection-end-column="117" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>algorithms-stanford</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: com.beust:jcommander:1.64</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
