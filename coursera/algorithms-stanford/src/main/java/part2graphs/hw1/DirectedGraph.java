@@ -15,17 +15,19 @@ public class DirectedGraph {
     public DirectedGraph() { }
 
     public void addVertex(Integer id) {
-        Vertex replaced = vertices.put(id, new Vertex(id));
-        assert replaced == null;
+        if (!vertices.containsKey(id)) {
+            vertices.put(id, new Vertex(id));
+        }
     }
 
     public void addEdge(Integer uId, Integer vId) {
         addVertex(uId);
         addVertex(vId);
         DirectedEdge edge = new DirectedEdge(uId, vId);
-        boolean replaced = edges.add(edge);
-        assert !replaced;
-        addEdgeToVertices(edge);
+        if (!edges.contains(edge)) {
+            edges.add(edge);
+            addEdgeToVertices(edge);
+        }
     }
 
     public void addReversedEdge(Integer u, Integer v) {
@@ -51,6 +53,10 @@ public class DirectedGraph {
 
     public  Map<Integer, Vertex> getVertices() {
         return vertices;
+    }
+
+    public HashSet<DirectedEdge> getEdges() {
+        return edges;
     }
 
     public Vertex getVertex(int i) {

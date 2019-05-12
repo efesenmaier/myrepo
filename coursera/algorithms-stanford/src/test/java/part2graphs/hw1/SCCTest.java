@@ -5,19 +5,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.Scanner;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Stream;
 
 @Test
 public class SCCTest {
@@ -89,32 +80,6 @@ public class SCCTest {
 
         // Verify answer matches the one submitted
         Assert.assertEquals(getLargestComponentSizes(scc), "434821,968,459,313,211");
-    }
-
-    private DirectedGraph loadGraphFromFile() throws IOException {
-        DirectedGraph graph = new DirectedGraph();
-
-        AtomicInteger lineCount = new AtomicInteger(0);
-        try (Stream<String> stream = Files.lines(Paths.get(getClass()
-                .getClassLoader().getResource("SCC.txt").getFile()))) {
-            stream.forEach(
-                    line ->  {
-                        Scanner scanner = new Scanner(line);
-                        if (scanner.hasNextInt()) {
-                            int u = scanner.nextInt();
-                            if (scanner.hasNextInt()) {
-                                int v = scanner.nextInt();
-                                graph.addEdge(u, v);
-                                if (lineCount.incrementAndGet() % 10000 == 0) {
-                                    System.out.println("Line: " + lineCount.get());
-                                }
-                            }
-                        }
-                    }
-            );
-        }
-
-        return graph;
     }
 
     private DirectedGraph loadGraphFromFile2() throws IOException {

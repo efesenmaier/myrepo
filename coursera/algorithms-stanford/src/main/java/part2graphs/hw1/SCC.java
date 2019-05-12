@@ -79,6 +79,7 @@ public class SCC {
 
         for (Vertex j : i.getNeighbors()) {
             if (!explored.contains(j.getId())) {
+                // TODO: Convert to iterative to avoid needing to increase thread stack size
                 DFS(j);
             }
         }
