@@ -16,14 +16,14 @@ public class GraphMinCutTest {
 
         graph.merge(0, 1);
         Assert.assertNull(graph.getVertex(1));
-        Assert.assertFalse(graph.getEdges().contains(new Edge(0, 1)));
+        Assert.assertFalse(graph.getEdges().contains(new UndirectedEdge(0, 1)));
         Assert.assertTrue(graph.getVertex(0).getMerged().contains(1));
         Assert.assertEquals(graph.getVertices().size(), 3);
         Assert.assertEquals(graph.getEdges().size(), 2);
 
         graph.merge(2, 0);
         Assert.assertNull(graph.getVertex(0));
-        Assert.assertFalse(graph.getEdges().contains(new Edge(0, 2)));
+        Assert.assertFalse(graph.getEdges().contains(new UndirectedEdge(0, 2)));
         Assert.assertEquals(graph.getVertex(2).getMerged(), toSet(0, 1));
         Assert.assertEquals(graph.getVertices().size(), 2);
         Assert.assertEquals(graph.getEdges().size(), 1);
@@ -122,6 +122,9 @@ public class GraphMinCutTest {
             minCutFound = Math.min(cutFound, minCutFound);
             System.out.println("Min cut found on iteration " + i + ": " + cutFound + ", all-time min: " + minCutFound);
         }
+
+        // Verify answer found matches confirmed answer on homework
+        Assert.assertEquals(minCutFound, 17);
     }
 
     private <T> Set<T> toSet(T... elements) {
@@ -131,7 +134,7 @@ public class GraphMinCutTest {
     }
 
     private long countEdgesBetween(Graph graph, Integer u, Integer v) {
-        Edge edge = new Edge(u, v);
+        UndirectedEdge edge = new UndirectedEdge(u, v);
         return graph.getEdges().stream().filter(e -> e.equals(edge)).count();
     }
 

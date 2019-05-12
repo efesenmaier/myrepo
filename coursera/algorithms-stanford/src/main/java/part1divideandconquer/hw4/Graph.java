@@ -9,8 +9,9 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Graph {
-    private ArrayList<Edge> edges = new ArrayList<>();
+    private ArrayList<UndirectedEdge> edges = new ArrayList<>();
     private Map<Integer, Vertex> vertices = new HashMap<>();
+    private Random rand = new Random();
 
     public Graph() { }
 
@@ -23,7 +24,7 @@ public class Graph {
     public void addEdge(Integer uId, Integer vId) {
         addVertex(uId);
         addVertex(vId);
-        Edge edge = new Edge(uId, vId);
+        UndirectedEdge edge = new UndirectedEdge(uId, vId);
         if (!edges.contains(edge)) {
             edges.add(edge);
         }
@@ -37,25 +38,24 @@ public class Graph {
         return vertices.get(id);
     }
 
-    public ArrayList<Edge> getEdges() {
+    public ArrayList<UndirectedEdge> getEdges() {
         return edges;
     }
 
     public void runRandomContraction() {
-        Random rand = new Random();
         while (vertices.size() > 2) {
             int randomEdge = rand.nextInt(edges.size());
-            Edge e = edges.get(randomEdge);
+            UndirectedEdge e = edges.get(randomEdge);
             merge(e);
         }
     }
 
-    public void merge(Integer id1, Integer id2) {
-        Edge edge = new Edge(id1, id2);
+    public void merge(Integer u, Integer v) {
+        UndirectedEdge edge = new UndirectedEdge(u, v);
         merge(edge);
     }
 
-    public void merge(Edge edge) {
+    public void merge(UndirectedEdge edge) {
         Assert.assertTrue(edges.contains(edge));
 
         Assert.assertTrue(vertices.containsKey(edge.getU()));
@@ -66,7 +66,7 @@ public class Graph {
                 // Remove all edges between the 2 nodes
                 .filter(e -> !e.equals(edge))
                 // Update all edges to replace V with U
-                .map(e -> e.replace(v.getId(), u.getId()))
+                .map(e -> e.replace(edge.getV(), edge.getU()))
                 // Filter out any loops
                 .filter(e -> !e.isLoop())
                 .collect(Collectors.toCollection(ArrayList::new));
@@ -74,7 +74,6 @@ public class Graph {
         u.getMerged().addAll(v.getMerged());
         u.getMerged().add(v.getId());
 
-        vertices.remove(v.getId());
-        edges.remove(edge);
+        vertices.remove(edge.getV());
     }
 }

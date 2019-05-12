@@ -2,11 +2,11 @@ package part1divideandconquer.hw4;
 
 import java.util.Objects;
 
-public class Edge {
+public class UndirectedEdge {
     private Integer u;
     private Integer v;
 
-    public Edge(Integer u, Integer v) {
+    public UndirectedEdge(Integer u, Integer v) {
         this.u = u;
         this.v = v;
     }
@@ -19,7 +19,7 @@ public class Edge {
         return v;
     }
 
-    public Edge replace(Integer oldId, Integer newId) {
+    public UndirectedEdge replace(Integer oldId, Integer newId) {
         if (u.equals(oldId)) {
             u = newId;
         }
@@ -44,7 +44,7 @@ public class Edge {
             return false;
         }
 
-        Edge edge = (Edge)obj;
+        UndirectedEdge edge = (UndirectedEdge)obj;
         return (Objects.equals(u, edge.u) && Objects.equals(v, edge.v)) ||
                 (Objects.equals(u, edge.v) && Objects.equals(v, edge.u));
     }
