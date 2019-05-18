@@ -1,15 +1,15 @@
 public class RotateArray {
-    public static void rotate(int[] nums, int k) {
-        if (k == 0) return;
+    public static int[] rotate(int[] nums, int k) {
+        if (k == 0) return nums;
         int n = nums.length;
         // Any rotation on array of size 0 or 1 does nothing
-        if (n <= 1) return;
+        if (n <= 1) return nums;
 
         // Ensure -n < k < n
         k = k % n;
 
         // A rotation that is a multiple of n does nothing
-        if (k == 0) return;
+        if (k == 0) return nums;
 
         // Ensure k is 0 < k < n
         if (k < 0) k += n;
@@ -18,14 +18,7 @@ public class RotateArray {
 
         System.arraycopy(nums, 0, rotated, k, n - k);
         System.arraycopy(nums, n-k, rotated, 0, k);
-        //for (int i = 0; i < n; ++i) {
-        //    rotated[(i+k)%n] = nums[i];
-        //}
-
-        System.arraycopy(rotated, 0, nums, 0, n);
-        //for (int i = 0; i < n; ++i) {
-        //    nums[i] = rotated[i];
-        //}
+        return rotated;
     }
 
     public static void rotateInPlace(int[] nums, int k) {

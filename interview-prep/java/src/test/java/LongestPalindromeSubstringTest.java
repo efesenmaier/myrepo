@@ -2,9 +2,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.List;
-
-public class LongestPalindromSubstringTest {
+public class LongestPalindromeSubstringTest {
 
     @DataProvider
     private Object[][] testData() {

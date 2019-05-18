@@ -31,6 +31,12 @@ public class RotateArrayTest {
         Assert.assertEquals(rotated, expectedBoxed);
     }
 
+    public void testMod() {
+        for (int i = -10; i <= 10; ++i) {
+            System.out.println("" + i + " mod 4 = " + i % 4);
+        }
+    }
+
     private int[] asArray(int...vals) {
         return vals;
     }
