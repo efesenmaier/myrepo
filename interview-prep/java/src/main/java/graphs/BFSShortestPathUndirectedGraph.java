@@ -17,7 +17,7 @@ public class BFSShortestPathUndirectedGraph {
     private static final int EDGE_LENGTH = 6;
     private int n;
     private int s;
-    private List<Set<Integer>> neighbors;
+    private Set<Integer>[] neighbors;
 
     private int[] distances;
     private List<Integer> distancesFinal = new ArrayList<>();
@@ -30,12 +30,12 @@ public class BFSShortestPathUndirectedGraph {
         assert n > 1;
 
         this.n = n;
-        this.neighbors = new ArrayList<>();
+        this.neighbors = new HashSet[n];
         this.distances = new int[n];
 
         for (int i = 0; i < n; ++i) {
-            // Create N adjacency lists
-            this.neighbors.add(new HashSet<>());
+            // Initialize adjacency lists
+            this.neighbors[i] = new HashSet<>();
 
             // Initialize distance to each node to -1
             this.distances[i] = -1;
@@ -55,8 +55,8 @@ public class BFSShortestPathUndirectedGraph {
             return;
         }
 
-        this.neighbors.get(u).add(v);
-        this.neighbors.get(v).add(u);
+        this.neighbors[u].add(v);
+        this.neighbors[v].add(u);
     }
 
     public void find(int s) {
@@ -80,7 +80,7 @@ public class BFSShortestPathUndirectedGraph {
             assert distances[u] != -1;
             int newDist = distances[u] + 1;
 
-            for (Integer v : neighbors.get(u)) {
+            for (Integer v : neighbors[u]) {
                 if (distances[v] == -1) {
                     distances[v] = newDist;
 
@@ -97,7 +97,7 @@ public class BFSShortestPathUndirectedGraph {
             if (j != s) {
                 int dist = distances[j];
                 if (dist < 0) {
-                     distancesFinal.add(dist);
+                    distancesFinal.add(dist);
                 } else {
                     distancesFinal.add(dist * EDGE_LENGTH);
                 }
