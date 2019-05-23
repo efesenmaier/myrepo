@@ -82,7 +82,7 @@ public class ShortestPathVisitingAllNodes {
 
         while (!nodesToVisit.isEmpty()) {
             NodeState current = nodesToVisit.poll();
-            //System.out.println("Visiting node " + current.getNode() + " with visited state " + toString(current.getVisited()) + " and path length " + current.getPathLength());
+            //DependencyManager.out.println("Visiting node " + current.getNode() + " with visited state " + toString(current.getVisited()) + " and path length " + current.getPathLength());
 
             for (int i : getNeighbors(current.getNode(), graph)) {
                 NodeState neighbor = new NodeState(i, current);
@@ -93,7 +93,7 @@ public class ShortestPathVisitingAllNodes {
                     nodesToVisit.add(neighbor);
                     seenNodes.add(neighbor);
                 } else {
-                    //System.out.println("Ignoring node " + i + " with visited state " + toString(neighbor.getVisited()));
+                    //DependencyManager.out.println("Ignoring node " + i + " with visited state " + toString(neighbor.getVisited()));
                 }
             }
         }
