@@ -88,6 +88,7 @@ public class KaratsubaMultiplicationTest {
         int[] result = KaratsubaMultiplication.multiply(x, y);
         BigInteger expectedResult = new BigInteger(xStr).multiply(new BigInteger(yStr));
         BigInteger actualResult = toBigInteger(result);
+        System.out.println("Answer: " + actualResult);
         Assert.assertEquals(actualResult, expectedResult);
     }
 

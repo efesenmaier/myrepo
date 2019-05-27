@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -44,6 +43,7 @@ public class RunningMedianTest {
             }
         }
 
-        System.out.println("Sum of medians % 10000: " + (sum % 10000));
+        System.out.println("Sum of medians % 10000: " + sum);
+        Assert.assertEquals((sum % 10000), 1213);
     }
 }
