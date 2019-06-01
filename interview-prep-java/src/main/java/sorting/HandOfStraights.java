@@ -1,47 +1,66 @@
 package sorting;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class HandOfStraights {
-    public static boolean isNStraightHand(int[] hand, int W) {
-        if (hand == null || W < 1 || hand.length < W || hand.length % W != 0) {
-            return false;
+    public static class MutableInteger {
+        private int value;
+        public MutableInteger(int value) {
+            this.value = value;
         }
+        public void set(int value) {
+            this.value = value;
+        }
+        public int intValue() {
+            return value;
+        }
+    }
+    public static boolean isNStraightHand(int[] hand, int W) {
+        // Sort the hand
+        Arrays.sort(hand);
 
-        TreeMap<Integer, Integer> cardCount = new TreeMap<>();
+        LinkedHashMap<Integer, MutableInteger> cardCount = new LinkedHashMap<>();
 
         // Count the cards of each value
-        for (int i = 0; i < hand.length; ++i) {
-            cardCount.put(hand[i], cardCount.getOrDefault(hand[i], 0) + 1);
+        for (int i = 0; i < hand.length;) {
+            int value = hand[i];
+            int count = 1;
+            int j = i+1;
+            for (; j < hand.length; ++j) {
+                if (hand[j] == hand[i]) {
+                    ++count;
+                } else {
+                    break;
+                }
+            }
+            i = j;
+            // Use mutable integer to avoid modifying map after ordering it
+            cardCount.put(value, new MutableInteger(count));
         }
 
         // Iterate across the cards, making a hand if possible starting with the lowest card
         // Otherwise return false
-        Set<Map.Entry<Integer, Integer>> entrySet = cardCount.entrySet();
-        Iterator<Map.Entry<Integer,Integer>> i = entrySet.iterator();
-        Map.Entry<Integer,Integer> entry = null;
-        while (i.hasNext()) {
-            if (entry == null || entry.getValue() == 0) {
-                entry = i.next();
-            }
-            Integer key = entry.getKey();
-            Integer value = entry.getValue();
-            if (value == 0) {
-                continue;
-            }
+        for (Iterator<Map.Entry<Integer,MutableInteger>> i = cardCount.entrySet().iterator(); i.hasNext();) {
+            Map.Entry<Integer, MutableInteger> entry = i.next();
+            Integer firstCard = entry.getKey();
+            MutableInteger firstCardCount = entry.getValue();
 
-            cardCount.put(key, value-1);
-
-            for (int j = 1; j < W; ++j) {
-                ++key;
-                value = cardCount.getOrDefault(key, -1);
-                if (value <= 0) {
-                    return false;
+            if (firstCardCount.intValue() > 0) {
+                int end = firstCard.intValue() + W;
+                for (int nextCard = firstCard.intValue() + 1; nextCard < end; ++nextCard) {
+                    MutableInteger nextCardCount = cardCount.getOrDefault(nextCard, new MutableInteger(0));
+                    if (nextCardCount.intValue() < firstCardCount.intValue()) {
+                        return false;
+                    }
+                    nextCardCount.set(nextCardCount.intValue() - firstCardCount.intValue());
                 }
-                cardCount.put(key, value-1);
             }
         }
 
