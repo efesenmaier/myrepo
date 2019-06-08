@@ -16,7 +16,9 @@ import java.util.stream.Collectors;
 public class MaxKClustersWithMinHammingDistance {
     public static final int MIN_HAMMING_DIST = 3;
 
-    Map<Integer, Set<Long>> nodesByCardinality = new HashMap<>();
+    Map<Long, Set<Long>> nodesByByte1 = new HashMap<>();
+    Map<Long, Set<Long>> nodesByByte2 = new HashMap<>();
+    Map<Long, Set<Long>> nodesByByte3 = new HashMap<>();
     UnionFind unionFind = new UnionFind();
 
     public static List<Long> toBitsets(List<String> bitStrings) {
@@ -35,28 +37,32 @@ public class MaxKClustersWithMinHammingDistance {
     }
 
     private void addToCluster(Long a) {
-        int cardinalityOfA = Long.bitCount(a);
         if (!unionFind.add(a.toString())) {
             return;
         }
+        Set<Long> nearestNodes = new HashSet<>();
+        nearestNodes.addAll(nodesByByte1.getOrDefault(getByte1(a), new HashSet<>()));
+        nearestNodes.addAll(nodesByByte2.getOrDefault(getByte2(a), new HashSet<>()));
+        nearestNodes.addAll(nodesByByte3.getOrDefault(getByte3(a), new HashSet<>()));
 
-        for (int cardinality = cardinalityOfA - 2; cardinality <= cardinalityOfA + 2; ++cardinality) {
-            Set<Long> nearestNeighbors = nodesByCardinality.get(cardinality);
-            if (nearestNeighbors != null) {
-                for (Long b : nearestNeighbors) {
-                    if (hammingDistance(a, b) < MIN_HAMMING_DIST) {
-                        unionFind.union(a.toString(), b.toString());
-                    }
-                }
+        for (Long b : nearestNodes) {
+            if (hammingDistance(a, b) < MIN_HAMMING_DIST) {
+                unionFind.union(a.toString(), b.toString());
             }
         }
 
-        if (nodesByCardinality.containsKey(cardinalityOfA)) {
-            nodesByCardinality.get(cardinalityOfA).add(a);
+        addToSet(nodesByByte1, getByte1(a), a);
+        addToSet(nodesByByte2, getByte2(a), a);
+        addToSet(nodesByByte3, getByte3(a), a);
+    }
+
+    private void addToSet(Map<Long, Set<Long>> nodeSetByByte, Long byteKey, Long val) {
+        if (nodeSetByByte.containsKey(byteKey)) {
+            nodeSetByByte.get(byteKey).add(val);
         } else {
             Set<Long> nodes = new HashSet<>();
-            nodes.add(a);
-            nodesByCardinality.put(cardinalityOfA, nodes);
+            nodes.add(val);
+            nodeSetByByte.put(byteKey, nodes);
         }
     }
 
@@ -85,5 +91,17 @@ public class MaxKClustersWithMinHammingDistance {
             }
         }
         return null;
+    }
+
+    public Long getByte1(Long word) {
+        return word & 0x000000FF;
+    }
+
+    public Long getByte2(Long word) {
+        return word & 0x0000FF00;
+    }
+
+    public Long getByte3(Long word) {
+        return word & 0x00FF0000;
     }
 }
