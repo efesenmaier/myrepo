@@ -1,5 +1,6 @@
 package part3.hw2;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.Scanner;
@@ -38,7 +39,7 @@ public class KClustersTest {
             int k = 4;
             long maxSpacing = kClusters.find(k);
             System.out.println("Max size: " + maxSpacing);
-            //Assert.assertEquals(maxSpacing, -885636L);
+            Assert.assertEquals(maxSpacing, 106);
         }
     }
 }

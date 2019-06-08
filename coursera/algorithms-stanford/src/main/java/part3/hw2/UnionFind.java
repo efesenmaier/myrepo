@@ -63,10 +63,14 @@ public class UnionFind {
     Map<String, Node> nodes = new HashMap<>();
     long numConnectedComponents = 0;
 
-    public void add(String x) {
+    public boolean add(String x) {
+        if (nodes.containsKey(x)) {
+            return false;
+        }
         Node replaced = nodes.put(x, new Node(x));
         assert replaced == null;
         ++numConnectedComponents;
+        return true;
     }
 
     public String find(String x) {
@@ -87,8 +91,9 @@ public class UnionFind {
     }
 
     public void union(String x, String y) {
-        assert !hasSameLeader(x, y);
-
+        if (hasSameLeader(x, y)) {
+            return;
+        }
         Node xLeader = getLeader(x);
         Node yLeader = getLeader(y);
 
