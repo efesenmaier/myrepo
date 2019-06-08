@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -30,6 +31,7 @@ public class DijkstrasShortestPathTest {
         Assert.assertEquals(dists[1], 1);
         Assert.assertEquals(dists[2], 3);
         Assert.assertEquals(dists[3], 6);
+        Assert.assertEquals(dijkstrasShortestPath.getShortestPath(3), Arrays.asList(0, 1, 2, 3));
     }
 
     public void testAssignment() {
