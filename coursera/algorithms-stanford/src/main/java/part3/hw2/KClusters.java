@@ -2,9 +2,8 @@ package part3.hw2;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
+import java.util.Set;
 
 /**
  * This K clusters algorithm is simply Kruskal's Minimum Spanning Tree (MST) algorithm
@@ -17,11 +16,11 @@ import java.util.Map;
  */
 public class KClusters {
     // Algorithm variables
-    Map<Integer, Vertex> vertices = new HashMap<>();
+    Set<String> vertices = new HashSet<>();
     private HashSet<Edge> edges;
 
-    //
-    private HashSet<Edge> mst = new HashSet<>();
+    // Algorithm variables
+    long minSpacingBetweenClusters = Long.MAX_VALUE;
 
     /**
      *
@@ -29,23 +28,52 @@ public class KClusters {
      */
     public KClusters(int n) {
         // There can be at most n choose 2 vertices, or n * (n-1)/2
+        // So just initialize to this capacity to avoid re-allocation and copying
         edges = new HashSet<>((n*(n-1))/2);
     }
 
-    public void addEdge(int u, int v, int distance) {
+    public void addEdge(String u, String v, Long distance) {
+        if (!vertices.contains(u)) {
+            vertices.add(u);
+        }
+
+        if (!vertices.contains(v)) {
+            vertices.add(v);
+        }
+
         Edge edge = new Edge(u, v, distance);
-        boolean replaced = edges.add(edge);
-        assert !replaced;
+        boolean added = edges.add(edge);
+        assert added;
     }
 
-    public void find() {
+    public long find(long k) {
         Edge[] sortedEdges = edges.toArray(new Edge[edges.size()]);
         Arrays.sort(sortedEdges, Comparator.comparing(e -> e.weight));
 
         UnionFind unionFind = new UnionFind();
 
-        for (int i = 0; i < sortedEdges.length; ++i) {
-            unionFind.add();
+        // Initialize the connected components (clusters)
+        for (String vertex : vertices) {
+            unionFind.add(vertex);
         }
+
+        for (int i = 0; i < sortedEdges.length; ++i) {
+            Edge edge = sortedEdges[i];
+            if (!unionFind.hasSameLeader(edge.u, edge.v)) {
+                unionFind.union(edge.u, edge.v);
+                if (unionFind.numConnectedComponents == k) {
+                    break;
+                }
+            }
+        }
+
+        for (int i = 0; i < sortedEdges.length; ++i) {
+            Edge edge = sortedEdges[i];
+            if (!unionFind.hasSameLeader(edge.u, edge.v) && edge.weight < minSpacingBetweenClusters) {
+                minSpacingBetweenClusters = edge.weight;
+            }
+        }
+
+        return minSpacingBetweenClusters;
     }
 }

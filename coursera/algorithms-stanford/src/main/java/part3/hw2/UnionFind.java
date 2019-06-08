@@ -2,9 +2,11 @@ package part3.hw2;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Union find tracks connected components by electing a "leader" for each component.
@@ -23,13 +25,13 @@ public class UnionFind {
         String name;
         Node leader;
 
-        String getLeaderName() {
-            return leader.name;
+        boolean isLeader() {
+            return leader == this;
         }
 
         // Maintained in leader
-        long getLeaderSize() {
-            return leader.followers.size();
+        long getSize() {
+            return followers.size();
         }
 
         void updateLeader(Node newLeader) {
@@ -58,55 +60,62 @@ public class UnionFind {
         }
     }
 
-    private Map<String, Node> nodes = new HashMap<>();
+    Map<String, Node> nodes = new HashMap<>();
+    long numConnectedComponents = 0;
 
     public void add(String x) {
         Node replaced = nodes.put(x, new Node(x));
         assert replaced == null;
+        ++numConnectedComponents;
     }
 
     public String find(String x) {
+        return getLeader(x).name;
+    }
+
+    private Node getNode(String x) {
         Node xNode = nodes.get(x);
         assert xNode != null;
         if (xNode == null) {
             return null;
         }
-        return xNode.getLeaderName();
+        return xNode;
+    }
+
+    private Node getLeader(String x) {
+        return getNode(x).leader;
     }
 
     public void union(String x, String y) {
-        Node xLeader = nodes.get(x).leader;
-        assert xLeader != null;
-        if (xLeader == null) {
-            return;
-        }
+        assert !hasSameLeader(x, y);
 
-        Node yLeader = nodes.get(y);
-        assert yLeader != null;
-        if (yLeader == null) {
-            return;
-        }
+        Node xLeader = getLeader(x);
+        Node yLeader = getLeader(y);
 
-        if (xLeader.getLeaderSize() < yLeader.getLeaderSize()) {
+        if (xLeader.getSize() < yLeader.getSize()) {
             updateLeader(xLeader, yLeader);
         } else {
             updateLeader(yLeader, xLeader);
         }
+        --numConnectedComponents;
     }
 
     public boolean hasSameLeader(String x, String y) {
-        return find(x) == find(y);
+        return find(x).equals(find(y));
     }
 
     private void updateLeader(Node xLeader, Node yLeader) {
-        long xSize = xLeader.getLeaderSize();
-        long ySize = yLeader.getLeaderSize();
+        assert xLeader.isLeader();
+        assert yLeader.isLeader();
+
+        long xSize = xLeader.getSize();
+        long ySize = yLeader.getSize();
         // Update nodes in X (including X) to have Y leader
-        for (Node n : xLeader.followers) {
-            n.updateLeader(yLeader);
-        }
+        List<Node> followers = xLeader.followers.stream().collect(Collectors.toList());
+        // Avoid ConcurrentModificationException by streaming to a list first
+        followers.stream().forEach(node -> node.updateLeader(yLeader));
 
         assert xLeader.followers.size() == 0;
-        assert yLeader.getLeaderSize() == xSize + ySize;
+        assert yLeader.getSize() == xSize + ySize;
     }
 }

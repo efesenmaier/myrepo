@@ -3,13 +3,12 @@ package part3.hw2;
 import java.util.Objects;
 
 public class Edge {
-    public Integer u;
-    public Integer v;
-    public Integer weight;
-    public String name;
+    public String u;
+    public String v;
+    public Long weight;
 
-    public Edge(int u, int v, int weight) {
-        if (u < v) {
+    public Edge(String u, String v, Long weight) {
+        if (u.compareTo(v) < 0) {
             this.u = u;
             this.v = v;
         } else {
@@ -17,26 +16,7 @@ public class Edge {
             this.u = v;
         }
         this.weight = weight;
-        this.name = String.format("[%d,%d,%d]", this.u, this.v, weight);
-        assert this.u < this.v;
-    }
-
-    int getOtherVertex(int u) {
-        if (this.u == u) {
-            return this.v;
-        } else {
-            assert this.v == u;
-            return this.u;
-        }
-    }
-
-    /**
-     * Returns a unique (and repeatable/normalized) name for the edge,
-     * assuming single edges between vertices or distinct weights.
-     * @return
-     */
-    public String getName() {
-        return name;
+        assert this.u.compareTo(this.v) < 0;
     }
 
     @Override
