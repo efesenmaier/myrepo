@@ -10,7 +10,7 @@ import java.util.List;
 @Test
 public class TopologicalOrderingTest {
     @DataProvider
-    private Object[][] testDataSimple() throws Exception {
+    private Object[][] testDataSimple() {
         return new Object[][]{
                 {Arrays.asList("A", "B", "C"), Arrays.asList(/* A -> */ Arrays.asList("B", "C"), /* B -> */ Arrays.asList(), /* C -> */ Arrays.asList("B")), "A", Arrays.asList("A", "C", "B")},
                 {Arrays.asList("TELNET", "TCPIP", "NETCARD", "NETWORK", "DNS"), Arrays.asList(
@@ -23,7 +23,7 @@ public class TopologicalOrderingTest {
     }
 
     @DataProvider
-    private Object[][] testData() throws Exception {
+    private Object[][] testData() {
         return new Object[][]{
                 {Arrays.asList("A", "B", "C", "D", "E", "F", "G"), Arrays.asList(
                         /* A -> */ Arrays.asList("B", "C"),

@@ -30,37 +30,40 @@ public class TopologicalOrdering {
     LinkedList<String> ordering = new LinkedList<>();
 
     List<String> findRecursive() {
-        topologicalOrderingRecursive(root);
+        topologicalOrderingRecursive(graph.getNode(root));
         return ordering;
     }
 
     List<String> findIterative() {
-        Node current = graph.vertices.get(root);
-        ArrayDeque<Pair<String, Iterator<String>>> stack = new ArrayDeque();
-        stack.push(new Pair<>(root, current.children.iterator()));
+        ArrayDeque<Pair<Node, Iterator<Node>>> stack = new ArrayDeque();
+
+        Node current = graph.getNode(root);
+        stack.push(new Pair<>(current, current.children.iterator()));
 
         while (!stack.isEmpty()) {
-            Pair<String, Iterator<String>> context = stack.pop();
+            Pair<Node, Iterator<Node>> context = stack.pop();
 
-            String currentName = context.getKey();
-            Iterator<String> i = context.getValue();
-            visited.add(currentName);
+            current = context.getKey();
+            Iterator<Node> i = context.getValue();
+            visited.add(current.name);
 
             if (i.hasNext()) {
                 // Not done with parent, push it back for now
                 stack.push(context);
 
-                String childName = i.next();
-                Node childNode = graph.vertices.get(childName);
-
-                if (!visited.contains(childName)) {
-                    stack.push(new Pair<>(childName, childNode.children.iterator()));
+                // Schedule child for visit
+                Node child = i.next();
+                if (!visited.contains(child.name)) {
+                    stack.push(new Pair<>(child, child.children.iterator()));
                 }
             } else {
+                // All children have been visited, output the node name
+                // For topological ordering, insert at front
+                // For reverse topological ordering, append at end
                 if (reverse) {
-                    ordering.addLast(currentName);
+                    ordering.addLast(current.name);
                 } else {
-                    ordering.addFirst(currentName);
+                    ordering.addFirst(current.name);
                 }
             }
         }
@@ -68,26 +71,27 @@ public class TopologicalOrdering {
         return ordering;
     }
 
-    void topologicalOrderingRecursive(String currentName) {
-        Node current = graph.vertices.get(currentName);
+    void topologicalOrderingRecursive(Node current) {
         assert current != null;
 
         // Mark as visited (prevents visiting nodes twice in the DAG, as well as cycles)
-        if (visited.contains(currentName)) {
+        if (visited.contains(current.name)) {
             return;
         }
-        visited.add(currentName);
+        visited.add(current.name);
 
-        for (Iterator<String> i = current.children.iterator(); i .hasNext();) {
-            String childName = i.next();
-            Node child = graph.vertices.get(childName);
-            topologicalOrderingRecursive(child.name);
+        for (Iterator<Node> i = current.children.iterator(); i .hasNext();) {
+            Node child = i.next();
+            topologicalOrderingRecursive(child);
         }
 
+        // All children have been visited, output the node name
+        // For topological ordering, insert at front
+        // For reverse topological ordering, append at end
         if (reverse) {
-            ordering.addLast(currentName);
+            ordering.addLast(current.name);
         } else {
-            ordering.addFirst(currentName);
+            ordering.addFirst(current.name);
         }
     }
 

@@ -11,13 +11,18 @@ public class Graph {
         assert children != null;
 
         Node vertex = vertices.getOrDefault(name, new Node(name));
-        for (String child : children) {
-            if (!vertices.containsKey(child)) {
-                vertices.put(child, new Node(child));
+        for (String childName : children) {
+            Node child = vertices.getOrDefault(childName, new Node(childName));
+            if (!vertices.containsKey(childName)) {
+                vertices.put(childName, child);
             }
             vertex.addChild(child);
         }
         vertices.put(name, vertex);
+    }
+
+    Node getNode(String name) {
+        return vertices.get(name);
     }
 
 }
