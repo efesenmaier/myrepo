@@ -17,74 +17,83 @@ public class DijkstrasShortestPathTest {
 
     @Test
     public void testLectureExample() {
-        Vertex[] vertices = new Vertex[4];
-        vertices[0] = new Vertex(new ImmutableMap.Builder().put(1, 1).put(2, 4).build());
-        vertices[1] = new Vertex(new ImmutableMap.Builder().put(2, 2).put(3, 6).build());
-        vertices[2] = new Vertex(new ImmutableMap.Builder().put(3, 3).build());
-        vertices[3] = new Vertex(Collections.emptyMap());
+        DirectedGraph graph = new DirectedGraph();
+        graph.addEdge("0", "1", 1);
+        graph.addEdge("0", "2", 4);
+        graph.addEdge("1", "2", 2);
+        graph.addEdge("1", "3", 6);
+        graph.addEdge("2", "3", 3);
 
-        DijkstrasShortestPath dijkstrasShortestPath = new DijkstrasShortestPath(vertices, 0);
+        DijkstrasShortestPath dijkstrasShortestPath = new DijkstrasShortestPath(graph, "0");
         dijkstrasShortestPath.run();
 
-        int[] dists = dijkstrasShortestPath.getDistances();
-        Assert.assertEquals(dists[0], 0);
-        Assert.assertEquals(dists[1], 1);
-        Assert.assertEquals(dists[2], 3);
-        Assert.assertEquals(dists[3], 6);
-        Assert.assertEquals(dijkstrasShortestPath.getShortestPath(3), Arrays.asList(0, 1, 2, 3));
+        Assert.assertEquals(dijkstrasShortestPath.getDistance(0), 0);
+        Assert.assertEquals(dijkstrasShortestPath.getDistance(1), 1);
+        Assert.assertEquals(dijkstrasShortestPath.getDistance(2), 3);
+        Assert.assertEquals(dijkstrasShortestPath.getDistance(3), 6);
+        Assert.assertEquals(dijkstrasShortestPath.getShortestPath(3), Arrays.asList("0", "1", "2", "3"));
+    }
+
+    @Test
+    public void testConnorsMap() {
+        DirectedGraph graph = new DirectedGraph();
+        graph.addEdge("Seattle", "Portland", 300);
+        graph.addEdge("Seattle", "Minneapolis", 2000);
+        graph.addEdge("Seattle", "Denver", 1400);
+        graph.addEdge("Portland", "Denver", 1000);
+        graph.addEdge("Portland", "Los Angeles", 1500);
+        graph.addEdge("Denver", "Los Angeles", 800);
+        graph.addEdge("Denver", "Minneapolis", 1200);
+
+        DijkstrasShortestPath dijkstrasShortestPath = new DijkstrasShortestPath(graph, "Seattle");
+        dijkstrasShortestPath.run();
+
+        String destination = "Los Angeles";
+        System.out.println("Shortest path from Seattle to " + destination + " is: " + dijkstrasShortestPath.getShortestPath(destination) + " with distance " + dijkstrasShortestPath.getDistance(destination));
+        //Assert.assertEquals(dijkstrasShortestPath.getShortestPath(3), Arrays.asList("0", "1", "2", "3"));
     }
 
     public void testAssignment() {
-        Vertex[] vertices = loadGraph(200, "dijkstraData.txt");
-        DijkstrasShortestPath dijkstrasShortestPath = new DijkstrasShortestPath(vertices, 0);
+        DirectedGraph graph = loadGraph(200, "dijkstraData.txt");
+        DijkstrasShortestPath dijkstrasShortestPath = new DijkstrasShortestPath(graph, "1");
         dijkstrasShortestPath.run();
 
-        int[] dists = dijkstrasShortestPath.getDistances();
         // 7,37,59,82,99,115,133,165,188,197.
-        System.out.println("Shortest paths: " +
-                dists[6] + "," +
-                dists[36] + "," +
-                dists[58] + "," +
-                dists[81] + "," +
-                dists[98] + "," +
-                dists[114] + "," +
-                dists[132] + "," +
-                dists[164] + "," +
-                dists[187] + "," +
-                dists[196]);
+        String shortestDists = dijkstrasShortestPath.getDistance(7) + "," +
+                dijkstrasShortestPath.getDistance(37) + "," +
+                dijkstrasShortestPath.getDistance(59) + "," +
+                dijkstrasShortestPath.getDistance(82) + "," +
+                dijkstrasShortestPath.getDistance(99) + "," +
+                dijkstrasShortestPath.getDistance(115) + "," +
+                dijkstrasShortestPath.getDistance(133) + "," +
+                dijkstrasShortestPath.getDistance(165) + "," +
+                dijkstrasShortestPath.getDistance(188) + "," +
+                dijkstrasShortestPath.getDistance(197);
+
+        System.out.println("Shortest paths: " + shortestDists);
+        Assert.assertEquals(shortestDists, "2599,2610,2947,2052,2367,2399,2029,2442,2505,3068");
     }
 
-    private Vertex[] loadGraph(int n, String filename) {
-        Vertex[] vertices = new Vertex[n];
-        for (int i = 0; i < vertices.length; ++i) {
-            vertices[i] = new Vertex(Collections.emptyMap());
-        }
+    private DirectedGraph loadGraph(int n, String filename) {
+        DirectedGraph graph = new DirectedGraph();
 
-        Map<Integer, Vertex> verticesMap = new HashMap<>();
         Pattern pattern = Pattern.compile("\\s*(\\d+)\\,(\\d+)\\s*");
         try (Scanner scanner = new Scanner(getClass().getClassLoader().getResourceAsStream(filename))) {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
 
                 try(Scanner lineScanner = new Scanner(line)) {
-                    int id = lineScanner.nextInt();
+                    String u = lineScanner.next();
 
-                    Map<Integer, Integer> neighbors = new HashMap<>();
                     Matcher m = pattern.matcher(lineScanner.nextLine());
                     while (m.find()) {
-                        int w = Integer.parseInt(m.group(1))-1;
+                        String v = m.group(1);
                         int weight = Integer.parseInt(m.group(2));
-                        neighbors.put(w, weight);
+                        graph.addEdge(u, v, weight);
                     }
-                    Vertex vertex = new Vertex(neighbors);
-                    verticesMap.put(id-1, vertex);
                 }
             }
         }
-
-        for (Map.Entry<Integer, Vertex> entry : verticesMap.entrySet()) {
-            vertices[entry.getKey()] = entry.getValue();
-        }
-        return vertices;
+        return graph;
     }
 }

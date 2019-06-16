@@ -10,25 +10,26 @@ import java.util.Map;
 import java.util.Set;
 
 public class DijkstrasShortestPath {
+    // Input
+    private DirectedGraph graph;
+
     // Initial conditions
-    private int s;
+    private String s;
     private int n;
-    private Vertex[] vertices;
 
-    private int[] dist; // Shortest path length - A
-    private Set<Integer> visited = new HashSet<>(); // Visited set - X
+    // Working variables
+    private Map<String, Integer> dist = new HashMap<>(); // Shortest path length - A
+    private Set<String> visited = new HashSet<>(); // Visited set - X
     // Vertex W -> (GreedyScoreToW, Source Vertex U)
-    private Map<Integer, Pair<Integer, Integer>> crossingVertexToGreedyScore = new HashMap<>();
-    Map<Integer, Integer> shortestPathPrev = new HashMap<>();
+    private Map<String, Pair<Integer, String>> crossingVertexToGreedyScore = new HashMap<>();
+    Map<String, String> shortestPathPrev = new HashMap<>();
 
-    public DijkstrasShortestPath(Vertex[] vertices, int s) {
-        this.vertices = vertices;
-        this.n = vertices.length;
+    public DijkstrasShortestPath(DirectedGraph g, String s) {
+        this.n = g.numVertices();
         this.s = s;
-        this.dist = new int[n];
+        this.graph = g;
 
-        assert s >= 0;
-        assert s < n;
+        assert graph.getVertex(s) != null;
     }
 
     public void run() {
@@ -36,10 +37,10 @@ public class DijkstrasShortestPath {
 
         while (visited.size() < n) {
             // Select min from crossing edges
-            Map.Entry<Integer, Pair<Integer, Integer>> min = selectMin();
-            int w = min.getKey();
+            Map.Entry<String, Pair<Integer, String>> min = selectMin();
+            String w = min.getKey();
             int greedyScoreToW = min.getValue().getKey();
-            int u = min.getValue().getValue();
+            String u = min.getValue().getValue();
 
 
             // Visit the node (updating crossing edges)
@@ -47,13 +48,13 @@ public class DijkstrasShortestPath {
         }
     }
 
-    private Map.Entry<Integer, Pair<Integer, Integer>> selectMin() {
+    private Map.Entry<String, Pair<Integer, String>> selectMin() {
         Integer minScore = Integer.MAX_VALUE;
-        Map.Entry<Integer, Pair<Integer, Integer>> min = null;
+        Map.Entry<String, Pair<Integer, String>> min = null;
 
         assert !crossingVertexToGreedyScore.isEmpty();
 
-        for (Map.Entry<Integer, Pair<Integer, Integer>> entry : crossingVertexToGreedyScore.entrySet()) {
+        for (Map.Entry<String, Pair<Integer, String>> entry : crossingVertexToGreedyScore.entrySet()) {
             int greedyScore = entry.getValue().getKey();
             if (greedyScore < minScore) {
                 min = entry;
@@ -65,10 +66,14 @@ public class DijkstrasShortestPath {
         return min;
     }
 
-    public List<Integer> getShortestPath(Integer w) {
-        LinkedList<Integer> path = new LinkedList<>();
-        int i = w;
-        while (i != s) {
+    public List<String> getShortestPath(int w) {
+        return getShortestPath(Integer.toString(w));
+    }
+
+    public List<String> getShortestPath(String w) {
+        LinkedList<String> path = new LinkedList<>();
+        String i = w;
+        while (!i.equals(s)) {
             path.addFirst(i);
             i = shortestPathPrev.get(i);
         }
@@ -76,24 +81,23 @@ public class DijkstrasShortestPath {
         return path;
     }
 
-    private void visit(int w, int greedyScoreToW, int u) {
-        assert w >= 0;
-        assert w < n;
-
+    private void visit(String w, int greedyScoreToW, String u) {
         assert !visited.contains(w);
         visited.add(w);
 
-        dist[w] = greedyScoreToW;
+        dist.put(w, greedyScoreToW);
         shortestPathPrev.put(w, u);
 
-        Vertex vertW = vertices[w];
+        Vertex vertW = graph.getVertex(w);
+        assert vertW != null;
 
         // Invariant: crossingVertexToGreedyScore maintains edges crossing from X to (V-X) with their weights
-        for (Map.Entry<Integer, Integer> entry : vertW.getNeighbors().entrySet()) {
-            int y = entry.getKey();
+        for (Map.Entry<String, Integer> entry : vertW.getNeighbors().entrySet()) {
+            String y = entry.getKey();
             // if W ->  is a new edge crossing X -> (V-X), where (V-X) are nodes not yet visited
             if (!visited.contains(y)) {
-                int shortestDistThroughW = dist[w] + entry.getValue();
+                assert dist.containsKey(w);
+                int shortestDistThroughW = dist.get(w) + entry.getValue();
                 if (crossingVertexToGreedyScore.containsKey(y)) {
                     if (crossingVertexToGreedyScore.get(y).getKey() > shortestDistThroughW) {
                         crossingVertexToGreedyScore.put(y, new Pair<>(shortestDistThroughW, w));
@@ -108,7 +112,11 @@ public class DijkstrasShortestPath {
         crossingVertexToGreedyScore.remove(w);
     }
 
-    public int[] getDistances() {
-        return dist;
+    public int getDistance(int w) {
+        return getDistance(Integer.toString(w));
+    }
+
+    public int getDistance(String w) {
+        return dist.getOrDefault(w, Integer.MAX_VALUE);
     }
 }
