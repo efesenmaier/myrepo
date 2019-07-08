@@ -66,18 +66,20 @@ public class DijkstrasShortestPath {
         return min;
     }
 
-    public List<String> getShortestPath(int w) {
+    public List<Pair<String, Integer>> getShortestPath(int w) {
         return getShortestPath(Integer.toString(w));
     }
 
-    public List<String> getShortestPath(String w) {
-        LinkedList<String> path = new LinkedList<>();
+    public List<Pair<String, Integer>> getShortestPath(String w) {
+        LinkedList<Pair<String, Integer>> path = new LinkedList<>();
         String i = w;
         while (!i.equals(s)) {
-            path.addFirst(i);
+            String v = i;
             i = shortestPathPrev.get(i);
+            int distance = graph.getVertex(i).getNeighbors().get(v);
+            path.addFirst(new Pair<>(v, distance));
         }
-        path.addFirst(s);
+        path.addFirst(new Pair<>(s, 0));
         return path;
     }
 

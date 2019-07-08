@@ -1,5 +1,6 @@
 package part2.hw2;
 
+import javafx.util.Pair;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -33,20 +34,28 @@ public class DijkstrasShortestPathTest {
     @Test
     public void testConnorsMap() {
         DirectedGraph graph = new DirectedGraph();
-        graph.addEdge("Seattle", "Portland", 300);
-        graph.addEdge("Seattle", "Minneapolis", 2000);
-        graph.addEdge("Seattle", "Denver", 1400);
-        graph.addEdge("Portland", "Denver", 1000);
-        graph.addEdge("Portland", "Los Angeles", 1500);
-        graph.addEdge("Denver", "Los Angeles", 800);
-        graph.addEdge("Denver", "Minneapolis", 1200);
+        graph.addEdges("Seattle", Arrays.asList(pair("Portland", 300), pair("Minneapolis", 2000), pair("Denver", 1400)));
+        graph.addEdges("Portland", Arrays.asList(pair("Denver", 1000), pair("Los Angeles", 1500), pair("Minneapolis", 1600)));
+        graph.addEdges("Los Angeles", Arrays.asList(pair("Denver", 900), pair("Houston", 1400)));
+        graph.addEdges("Denver", Arrays.asList(pair("Minneapolis", 800), pair("Chicago", 750), pair("St. Louis", 600), pair("New Orleans", 900)));
+        graph.addEdges("Houston", Arrays.asList(pair("St. Louis", 800), pair("New Orleans", 150)));
+        graph.addEdges("New Orleans", Arrays.asList(pair("Atlanta", 180), pair("Washington DC", 560)));
+        graph.addEdges("Minneapolis", Arrays.asList(pair("Chicago", 500), pair("St. Louis", 800)));
+        graph.addEdges("Chicago", Arrays.asList(pair("St. Louis", 400), pair("New York", 800)));
+        graph.addEdges("St. Louis", Arrays.asList(pair("New Orleans", 600), pair("Washington DC", 800)));
+        graph.addEdges("New York", Arrays.asList(pair("Washington DC", 370)));
+        graph.addEdges("Atlanta", Arrays.asList(pair("Washington DC", 400)));
 
         DijkstrasShortestPath dijkstrasShortestPath = new DijkstrasShortestPath(graph, "Seattle");
         dijkstrasShortestPath.run();
 
-        String destination = "Los Angeles";
-        System.out.println("Shortest path from Seattle to " + destination + " is: " + dijkstrasShortestPath.getShortestPath(destination) + " with distance " + dijkstrasShortestPath.getDistance(destination));
+        String destination = "Washington DC";
+        System.out.println("Shortest path from Seattle to " + destination + " is: " + dijkstrasShortestPath.getShortestPath(destination) + " with total distance " + dijkstrasShortestPath.getDistance(destination));
         //Assert.assertEquals(dijkstrasShortestPath.getShortestPath(3), Arrays.asList("0", "1", "2", "3"));
+    }
+
+    private Pair<String, Integer> pair(String u, Integer weight) {
+        return new Pair<>(u, weight);
     }
 
     public void testAssignment() {

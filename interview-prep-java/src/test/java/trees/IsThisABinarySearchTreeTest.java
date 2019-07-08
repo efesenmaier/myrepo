@@ -28,7 +28,8 @@ public class IsThisABinarySearchTreeTest {
     @Test(dataProvider = "testData")
     public void test(List<Integer> nodes, boolean expected) {
         IsThisABinarySearchTree.Node root = createTree(nodes);
-        Assert.assertEquals(IsThisABinarySearchTree.checkBST(root), expected);
+        IsThisABinarySearchTree solution = new IsThisABinarySearchTree();
+        Assert.assertEquals(solution.checkBST(root), expected);
     }
 
     private IsThisABinarySearchTree.Node createTree(List<Integer> integerList) {
